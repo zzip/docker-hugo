@@ -1,9 +1,9 @@
-publysher/hugo
+monachus/hugo
 ==============
 
-`publysher/hugo` is a [Docker](https://www.docker.io) base image for static sites generated with [Hugo](http://gohugo.io). 
+`monachus/hugo` is a [Docker](https://www.docker.io) base image for static sites generated with [Hugo](http://gohugo.io).  This is a fork of `publysher/hugo` that exists solely to follow upstream releases more closely.
 
-Images derived from this image can either run as a stand-alone server, or function as a volume image for your web server. 
+Images derived from this image can either run as a stand-alone server, or function as a volume image for your web server.  You can also use them in a CI/CD system such as Gitlab CI to build your content prior to bundling it into a standalone webserver container such as `httpd:alpine`.
 
 Prerequisites
 -------------
@@ -23,7 +23,7 @@ The image is based on the following directory structure:
 
 In other words, your Hugo site resides in the `site` directory, and you have a simple Dockerfile:
 
-	FROM publysher/hugo 
+	FROM monachus/hugo 
 
 
 Building your site
@@ -63,4 +63,4 @@ The image is also suitable for use as a volume image for a web server, such as [
 Examples
 --------
 
-For an example of a Hugo site, have a look at https://github.com/publysher/blog.publysher.nl
+For an example of a Hugo site, have a look at https://monach.us.
