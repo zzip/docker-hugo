@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:stretch
 
 # Install pygments (for syntax highlighting) 
 RUN apt-get -qq update \
