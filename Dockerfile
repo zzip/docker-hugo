@@ -5,24 +5,26 @@ RUN apt-get -qq update \
 	&& DEBIAN_FRONTEND=noninteractive apt-get -qq install -y --no-install-recommends python-pygments git ca-certificates asciidoc curl \
 	&& rm -rf /var/lib/apt/lists/*
 
-# Download and install hugo
+
+# Configuration variables
 ENV HUGO_VERSION 0.54.0
-
 ENV HUGO_BINARY hugo_${HUGO_VERSION}_Linux-64bit.deb
+ENV SITE_DIR '/usr/share/blog'
 
+# Download and install hugo
 RUN curl -sL -o /tmp/hugo.deb \
     https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${HUGO_BINARY} && \
     dpkg -i /tmp/hugo.deb && \
     rm /tmp/hugo.deb && \
-    mkdir /usr/share/blog
+    mkdir ${SITE_DIR}
 
-WORKDIR /usr/share/blog
+WORKDIR ${SITE_DIR}
 
 # Expose default hugo port
 EXPOSE 1313
 
 # Automatically build site
-ONBUILD ADD site/ /usr/share/blog
+ONBUILD ADD site/ ${SITE_DIR}
 ONBUILD RUN hugo -d /usr/share/nginx/html/
 
 # By default, serve site
