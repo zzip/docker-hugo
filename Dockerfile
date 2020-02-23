@@ -1,12 +1,12 @@
 FROM debian:stretch
 
-# Install pygments (for syntax highlighting) 
+# Install pygments (for syntax highlighting)
 RUN apt-get -qq update \
 	&& DEBIAN_FRONTEND=noninteractive apt-get -qq install -y --no-install-recommends libstdc++6 python-pygments git ca-certificates asciidoc curl \
 	&& rm -rf /var/lib/apt/lists/*
 
 # Configuration variables
-ENV HUGO_VERSION 0.65.2
+ENV HUGO_VERSION 0.65.3
 ENV HUGO_BINARY hugo_extended_${HUGO_VERSION}_Linux-64bit.deb
 ENV SITE_DIR '/usr/share/blog'
 
